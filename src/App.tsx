@@ -1,13 +1,14 @@
-import { Box } from '@mui/material'
-import './App.css'
-import { FormikFormExample } from './components/MultiStepForm'
+import { Box } from "@mui/material";
+import "./App.css";
+import TextMobileStepper from "./components/Stepper";
 
 function App() {
   return (
     <Box>
-      <FormikFormExample />
+      {/* <FormikFormExample /> */}
+      <TextMobileStepper />
     </Box>
-  )
+  );
 }
 
-export default App
+export default App;
