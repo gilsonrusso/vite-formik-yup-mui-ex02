@@ -1,11 +1,13 @@
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MobileStepper from "@mui/material/MobileStepper";
 import { useTheme } from "@mui/material/styles";
 import { Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useUsers } from "../hooks/useUsers";
 import { StepperSchema, TStepperForms } from "../schema/StepperSchema";
 import { StepperForm } from "./StepperForm";
 
@@ -20,9 +22,12 @@ export default function TextMobileStepper() {
   const [activeStep, setActiveStep] = useState(0);
   // const [steps, setSteps] = useState<TStepperForms>([]);
 
-  const [initialValues, setInitialValues] = useState<TStepperForms | null>(
-    null
-  );
+  const { users, loading } = useUsers();
+
+  console.log(":::::::::::: users", users);
+  console.log(":::::::::::: loading", loading);
+
+  const [initialValues, setInitialValues] = useState<TStepperForms>([]);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -45,7 +50,7 @@ export default function TextMobileStepper() {
     loadFormData(); // Chama a função para carregar os dados
   }, []);
 
-  if (initialValues === null) {
+  if (loading) {
     return <div>Carregando...</div>; // Exibe uma mensagem de carregamento
   }
 
@@ -103,7 +108,7 @@ export default function TextMobileStepper() {
               </Button>
             }
           />
-          {/* <Paper
+          <Paper
             square
             elevation={0}
             sx={{
@@ -112,8 +117,8 @@ export default function TextMobileStepper() {
               pl: 2,
             }}
           >
-            <Typography>{initialValues.length}</Typography>
-          </Paper> */}
+            {JSON.stringify(users, null, 2)}
+          </Paper>
           <Box>
             {/* {steps[activeStep].description} */}
             <form onSubmit={handleSubmit}>
