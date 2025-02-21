@@ -1,6 +1,6 @@
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { Paper } from "@mui/material";
+import { Paper, Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -115,9 +115,14 @@ export default function TextMobileStepper() {
               display: "flex",
               alignItems: "center",
               pl: 2,
+              marginTop: "25px",
+              marginBottom: "25px",
             }}
           >
-            {JSON.stringify(users, null, 2)}
+            <Stack spacing={2} padding={2}>
+              <Typography>Testando Axios Lib</Typography>
+              <Typography>{JSON.stringify(users, null, 2)}</Typography>
+            </Stack>
           </Paper>
           <Box>
             {/* {steps[activeStep].description} */}
